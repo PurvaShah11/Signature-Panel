@@ -82,10 +82,12 @@
         
 
        	var image = document.getElementById("photo");
+        var i=photo.getAttribute('src');
+        var ii=i.replace("data:image/png;base64,","");
         var action = component.get('c.saveImageFile'); 
 
        	action.setParams({
-            "imageUrl" : photo.getAttribute('src'),
+            "imageUrl" : ii,
             "recordId" : component.get('v.recordId')
         });
         action.setCallback(this, function(a){

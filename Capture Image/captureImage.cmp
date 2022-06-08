@@ -20,7 +20,7 @@
                     Captures Image
                 </h1>
                 <div class="output">
-                    <img id="photo"  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="The screen capture will appear in this box."/> 
+                    <img id="photo"  alt="The screen capture will appear in this box."/> 
                     <button id="saveButton" onclick="{!c.savePhoto}">Save photo to record</button> 
                 </div>
             </lightning:layoutItem>

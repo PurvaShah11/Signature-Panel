@@ -1,10 +1,10 @@
 ({
     doInit : function(component, event, helper) {
-       
+        
         var width = 400; // scale the photo width to this
         var height = 0; // computed based on the input stream
-
-     	var streaming = false;
+    
+        var streaming = false;
         var video = null;
         var canvas = null;
         var photo = null;
@@ -53,7 +53,7 @@
         
         
         clearphoto();
-      
+        
         function clearphoto() {
             var context = canvas.getContext('2d');
             context.fillStyle = "#AAA";
@@ -63,7 +63,7 @@
             photo.setAttribute('src', data);
         }
         
-      	function takepicture() {
+        function takepicture() {
             var context = canvas.getContext('2d');
             if (width && height) {
                 canvas.width = width;
@@ -78,15 +78,15 @@
         
     },
     savePhoto: function(component, event, helper) {
-
+    
         
-
-       	var image = document.getElementById("photo");
+    
+        var image = document.getElementById("photo");
         var i=photo.getAttribute('src');
         var ii=i.replace("data:image/png;base64,","");
         var action = component.get('c.saveImageFile'); 
-
-       	action.setParams({
+    
+        action.setParams({
             "imageUrl" : ii,
             "recordId" : component.get('v.recordId')
         });
@@ -94,8 +94,13 @@
             var state = a.getState(); // get the response state
             if(state == 'SUCCESS') {
                 component.set('v.sObjList', a.getReturnValue());
+                helper.showToast('Success !', 'Image Uploaded Successfully', 'success');
+            $A.get("e.force:closeQuickAction").fire();
+            
             }
+        
+            
         });
         $A.enqueueAction(action);
-	}
-})
+    }
+    })
